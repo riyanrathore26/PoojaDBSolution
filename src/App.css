@@ -94,7 +94,6 @@ border-radius: 15px 0px;
 .servicebox{
   width: 100%;
   height: auto;
-  background-color: blue;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -102,8 +101,7 @@ border-radius: 15px 0px;
   padding: 20px;
   
 }
-.subsbox{
-}
+
 .subsbox img{
   width: 100px;
   border-radius: 50%;
