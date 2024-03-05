@@ -77,7 +77,6 @@ app.get('/products/:productId', async (req, res) => {
     console.log(req.params.productId);
     try {
       const product = await Post.findById(req.params.productId);
-      console.log(product);
       res.json(product);
     } catch (error) {
       res.status(500).json({ error: error.message });

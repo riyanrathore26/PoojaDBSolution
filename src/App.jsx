@@ -3,8 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminPage from './component/AdminPage';
 import Home from './component/Home';
-import Post from './component/Post'; // Import the Post component
 import Service from './component/Service';
+import SpasubCat from './component/SpasubCat';
 
 const App = () => {
   return (
@@ -14,6 +14,7 @@ const App = () => {
           <Route path="/" element={<AdminPage />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Service/:productId" element={<Service />} />
+          <Route path="/Service/sub/:productId" element={<SpasubCat />} />
         </Routes>
       </Router>
     </div>

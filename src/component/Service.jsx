@@ -2,66 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useNavigate } from "react-router-dom";
 import { Pagination } from 'swiper/modules';
 import { useParams } from 'react-router-dom';
-
-// export default function Service() {
-//   const { productId } = useParams();
-//   const [product, setProduct] = useState(null);
-
-//   useEffect(() => {
-//     const url = `http://localhost:5000/products/${productId}`;
-//     fetch(url)
-//       .then(response => response.json())
-//       .then(data => {
-//         setProduct(data);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching post data:', error);
-//       });
-//   }, [productId]); // Added productId to dependency array to fetch data when it changes
-
-//   return (
-//     <div className='spacat'>
-//       <div className="maincontainer">
-//         <div className="spa">
-//           {product ? (
-//             <div className="subspa">
-//               <h2>{product.name}</h2>
-//               <div className="spaimgbox">
-//                 <img src={product.images[0]} alt="" />
-//               </div>
-//               <br />
-//               <hr />
-//               <div className="service">
-//                 <h3 style={{ marginLeft: '20px' }}>Select Your Service</h3>
-//                 <div className="servicebox">
-//                   <div className="subsbox">
-//                     <img src={product.images[0]} alt="" />
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           ) : (
-//             <p>Loading...</p>
-//           )}
-//         </div>
-//         <div className="sidebar">
-//           <div className="slider">
-//             {/* Your Swiper component here */}
-//           </div>
-//           <div className="scroller">
-//             {/* Your images here */}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default function Service() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
+  const handleClick = (productId) => {
+    console.log("lo");
+    // Navigate to "/Service" with the product ID as a parameter
+    navigate(`/Service/sub/${productId}`);
+  }
 
   useEffect(() => {
     const url = `http://localhost:5000/products/${productId}`;
@@ -92,7 +45,7 @@ export default function Service() {
                 <h3 style={{marginLeft:'20px'}}>Select Your Service</h3>
                 <div className="servicebox">
                 {product.images.slice(2).map((image, index) => ( // Start from index 2
-                  <div key={index} className="subsbox">
+                  <div key={index} className="subsbox" onClick={() => handleClick(product._id)}>
                     <img src={image} alt={`Image ${index}`} />
                   </div>
                 ))}
